@@ -1,9 +1,9 @@
 module.exports = {
     mysql_dev: {
-        host: 'localhost',
-        user: 'root',
-        password: 'root',
-        database: 'exam-system',
+        host: '123.56.235.95',
+        user: 'lxm',
+        password: 'lxm',
+        database: 'exam',
         connectionLimit: 10,
         supportBigNumbers: true
     }
