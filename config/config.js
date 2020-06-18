@@ -3,7 +3,7 @@ module.exports = {
         host: '123.56.235.95',
         user: 'lxm',
         password: 'lxm',
-        database: 'exam',
+        database: 'exam_system',
         connectionLimit: 10,
         supportBigNumbers: true
     }
