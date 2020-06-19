@@ -38,10 +38,10 @@ Pro.prototype.findbyeid  = function(examId, callback) {  //传入id 返回一行
 
         connection.query(sql, [examId], function(err, results) {
             if (err) {
-                console.log(err);
                 callback(true);
                 return;
             }
+
             callback(false, results);
             connection.release();
         });
@@ -49,8 +49,8 @@ Pro.prototype.findbyeid  = function(examId, callback) {  //传入id 返回一行
 };
 
 
-Pro.prototype.save = function(proId, examId, answer,score,type,callback){
-    var sql = "INSERT INTO pro SET proId= ?, examId= ?,answer= ?,score= ?,type= ?";
+Pro.prototype.save = function(proId,answer,score,type,prob,callback){
+    var sql = "INSERT INTO pro SET proId= ?,answer= ?,score= ?,type= ?,prob = ?";
     // get a connection from the pool
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -59,7 +59,7 @@ Pro.prototype.save = function(proId, examId, answer,score,type,callback){
         }
         // make the query
 
-        connection.query(sql, [proId,examId,answer,score,type], function(err, results) {
+        connection.query(sql, [proId,answer,score,type,prob], function(err, results) {
             if (err) {
                 callback(true);
                 return;
