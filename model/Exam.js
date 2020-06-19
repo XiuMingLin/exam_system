@@ -26,7 +26,7 @@ Exam.prototype.find  = function(examId , callback) {  //传入id 返回一行
     });
 };
 Exam.prototype.save = function(Examname,teaId,callback){
-    var sql = "INSERT INTO Exam SET examName = ?, teaId = ?";
+    var sql = "INSERT INTO exam SET examName = ?, teaId = ?";
     // get a connection from the pool
     db.pool.getConnection(function(err, connection) {
         if (err) {

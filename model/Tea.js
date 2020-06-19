@@ -1,7 +1,7 @@
 var db = require('../config/database');
 var _ = require('underscore');
 
-var Stu = function() {};
+var Tea = function() {};
 
 
 Tea.prototype.find  = function(username, callback) {  //传入id 返回一行

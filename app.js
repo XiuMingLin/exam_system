@@ -17,17 +17,9 @@ app.use(session({
 
 app.use(express.static(path.join(__dirname, 'public')))
 
+const Teacher = require('./route/Teacher')
 
-db.pool.getConnection((err, conn)=>{
-    if(err){
-        console.log(err)
-    }else{
-        conn.query("select * from stu", (qerr, vals, fields)=>{
-            conn.release()
-            console.log(vals);
-        })
-    }
-})
+app.use('/teacher', Teacher)
 
 app.listen(80)
 console.log('server on')
