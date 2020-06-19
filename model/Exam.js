@@ -5,7 +5,7 @@ var Exam= function() {};
 
 
 Exam.prototype.find  = function(examId , callback) {  //传入id 返回一行
-    var sql = "SELECT * FROM Exam WHERE examId =?";
+    var sql = "SELECT * FROM exam WHERE examId =?";
     // get a connection from the pool
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -47,7 +47,7 @@ Exam.prototype.save = function(Examname,teaId,callback){
     });
 }
 Exam.prototype.change = function(examid,isenable, callback) {
-    var sql = "update Exam set isEnable = ? WHERE examId =? ";
+    var sql = "update exam set isEnable = ? WHERE examId =? ";
     
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -70,7 +70,7 @@ Exam.prototype.change = function(examid,isenable, callback) {
 
 
 Exam.prototype.dele = function( examId , callback) {
-    var sql = "delete from Exam WHERE examId =? ";
+    var sql = "delete from exam WHERE examId =? ";
    
     db.pool.getConnection(function(err, connection) {
         if (err) {

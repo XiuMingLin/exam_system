@@ -6,7 +6,7 @@ var Analyse= function() {};
 
 
 Analyse.prototype.find  = function( examId, callback) {  //查询某一考试的分析
-    var sql = "SELECT * FROM Analyse WHERE examId=?";
+    var sql = "SELECT * FROM analyse WHERE examId=?";
     // get a connection from the pool
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -30,7 +30,7 @@ Analyse.prototype.find  = function( examId, callback) {  //查询某一考试的
 
 
 Analyse.prototype.save = function(examId,callback){ //插入新的结果
-    var sql = "INSERT INTO Analyse SET examId= ?";
+    var sql = "INSERT INTO analyse SET examId= ?";
     // get a connection from the pool
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -52,7 +52,7 @@ Analyse.prototype.save = function(examId,callback){ //插入新的结果
 }
 
 Analyse.prototype.change_score = function(examId,evasocre, callback) { //改平均成绩
-    var sql = "update Analyse set evasocre= ? WHERE examId=?";
+    var sql = "update analyse set evasocre= ? WHERE examId=?";
     
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -75,7 +75,7 @@ Analyse.prototype.change_score = function(examId,evasocre, callback) { //改平�
 
 
 Analyse.prototype.change_result = function(examId,resu, callback) { //改成绩分析
-    var sql = "update Analyse set result= ? WHERE examId=?";
+    var sql = "update analyse set result= ? WHERE examId=?";
     
     db.pool.getConnection(function(err, connection) {
         if (err) {

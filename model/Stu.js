@@ -5,7 +5,7 @@ var Stu = function() {};
 
 
 Stu.prototype.find  = function(username, callback) {  //传入id 返回一行
-    var sql = "SELECT * FROM Stu WHERE userId=?";
+    var sql = "SELECT * FROM stu WHERE userId=?";
     // get a connection from the pool
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -26,7 +26,7 @@ Stu.prototype.find  = function(username, callback) {  //传入id 返回一行
     });
 };
 Stu.prototype.save = function(username,password,stuname,callback){
-    var sql = "INSERT INTO Stu SET userId= ?, userPwd= ?, stuName = ?";
+    var sql = "INSERT INTO stu SET userId= ?, userPwd= ?, stuName = ?";
     // get a connection from the pool
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -47,7 +47,7 @@ Stu.prototype.save = function(username,password,stuname,callback){
     });
 }
 Stu.prototype.change = function(newpwd,account_number, callback) {
-    var sql = "update Stu set userPwd= ? WHERE userId=? ";
+    var sql = "update stu set userPwd= ? WHERE userId=? ";
     
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -70,7 +70,7 @@ Stu.prototype.change = function(newpwd,account_number, callback) {
 
 
 Stu.prototype.dele = function(account_number, callback) {
-    var sql = "delete from Stu WHERE userId=? ";
+    var sql = "delete from stu WHERE userId=? ";
    
     db.pool.getConnection(function(err, connection) {
         if (err) {

@@ -5,7 +5,7 @@ var Tea = function() {};
 
 
 Tea.prototype.find  = function(username, callback) {  //传入id 返回一行
-    var sql = "SELECT * FROM Stu WHERE userId=?";
+    var sql = "SELECT * FROM tea WHERE userId=?";
     // get a connection from the pool
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -26,7 +26,7 @@ Tea.prototype.find  = function(username, callback) {  //传入id 返回一行
     });
 };
 Tea.prototype.save = function(username,password,teaname,callback){
-    var sql = "INSERT INTO Tea SET userId= ?, userPwd= ?, teaName = ?";
+    var sql = "INSERT INTO tea SET userId= ?, userPwd= ?, teaName = ?";
     // get a connection from the pool
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -47,7 +47,7 @@ Tea.prototype.save = function(username,password,teaname,callback){
     });
 }
 Tea.prototype.change = function(newpwd,account_number, callback) {
-    var sql = "update Tea set userPwd= ? WHERE userId=? ";
+    var sql = "update tea set userPwd= ? WHERE userId=? ";
    
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -70,7 +70,7 @@ Tea.prototype.change = function(newpwd,account_number, callback) {
 
 
 Tea.prototype.dele = function(account_number, callback) {
-    var sql = "delete from Tea WHERE userId=? ";
+    var sql = "delete from tea WHERE userId=? ";
    
   
     db.pool.getConnection(function(err, connection) {

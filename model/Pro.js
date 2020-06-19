@@ -5,7 +5,7 @@ var Pro = function() {};
 
 
 Pro.prototype.findbypid  = function(proId, callback) {  //传入id 返回一行
-    var sql = "SELECT * FROM Pro WHERE proId=?";
+    var sql = "SELECT * FROM pro WHERE proId=?";
     // get a connection from the pool
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -27,7 +27,7 @@ Pro.prototype.findbypid  = function(proId, callback) {  //传入id 返回一行
 };
 
 Pro.prototype.findbyeid  = function(examId, callback) {  //传入id 返回一行
-    var sql = "SELECT * FROM Pro WHERE examId=?";
+    var sql = "SELECT * FROM pro WHERE examId=?";
     // get a connection from the pool
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -50,7 +50,7 @@ Pro.prototype.findbyeid  = function(examId, callback) {  //传入id 返回一行
 
 
 Pro.prototype.save = function(proId,answer,score,type,callback){
-    var sql = "INSERT INTO Pro SET proId= ?,answer= ?,score= ?,type= ?";
+    var sql = "INSERT INTO pro SET proId= ?,answer= ?,score= ?,type= ?";
     // get a connection from the pool
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -71,7 +71,7 @@ Pro.prototype.save = function(proId,answer,score,type,callback){
     });
 }
 Pro.prototype.change = function(newpwd,account_number, callback) {
-    var sql = "update Pro set userPwd= ? WHERE userId=? ";
+    var sql = "update pro set userPwd= ? WHERE userId=? ";
     
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -94,7 +94,7 @@ Pro.prototype.change = function(newpwd,account_number, callback) {
 
 
 Pro.prototype.dele = function(proId, callback) {
-    var sql = "delete from Pro WHERE proId=? ";
+    var sql = "delete from pro WHERE proId=? ";
    
     db.pool.getConnection(function(err, connection) {
         if (err) {
