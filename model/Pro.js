@@ -70,27 +70,6 @@ Pro.prototype.save = function(proId,answer,score,type,prob,callback){
         });
     });
 }
-Pro.prototype.change = function(newpwd,account_number, callback) {
-    var sql = "update pro set userPwd= ? WHERE userId=? ";
-    
-    db.pool.getConnection(function(err, connection) {
-        if (err) {
-            callback(true);
-            return;
-        }
-      
-        connection.query(sql, [newpwd,account_number], function(err, results) {
-            if (err) {
-                callback(true);
-                return;
-            }
-            callback(false, results);
-            connection.release();
-        });
-      
-
-    });
-};
 
 
 Pro.prototype.dele = function(proId, callback) {
