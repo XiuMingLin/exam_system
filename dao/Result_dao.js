@@ -1,10 +1,10 @@
 var db = require('../config/database');
 var _ = require('underscore');
 
-var Result= function() {};
+var Result_dao= function() {};
 
 
-Result.prototype.find1  = function( examId,stuId, callback) {  //查询单个人的某一考试的成绩
+Result_dao.prototype.Result_find1  = function(examId, stuId, callback) {  //查询单个人的某一考试的成绩
     var sql = "SELECT * FROM result WHERE examId=?,stuId=?";
     // get a connection from the pool
     db.pool.getConnection(function(err, connection) {
@@ -26,7 +26,7 @@ Result.prototype.find1  = function( examId,stuId, callback) {  //查询单个人
     });
 };
 
-Result.prototype.find2  = function(stuId, callback) {  //查询单个人的所有成绩
+Result_dao.prototype.Result_find2  = function(stuId, callback) {  //查询单个人的所有成绩
     var sql = "SELECT * FROM result WHERE stuId =?";
     // get a connection from the pool
     db.pool.getConnection(function(err, connection) {
@@ -48,7 +48,7 @@ Result.prototype.find2  = function(stuId, callback) {  //查询单个人的所�
     });
 };
 
-Result.prototype.find3  = function(examId , callback) {  //查询一个考试所有人的成绩
+Result_dao.prototype.Result_find3  = function(examId , callback) {  //查询一个考试所有人的成绩
     var sql = "SELECT * FROM result WHERE examId =?";
     // get a connection from the pool
     db.pool.getConnection(function(err, connection) {
@@ -71,7 +71,7 @@ Result.prototype.find3  = function(examId , callback) {  //查询一个考试所
 };
 
 
-Result.prototype.save = function(examId,stuId,score,callback){ //插入新的结果
+Result_dao.prototype.Result_save = function(examId, stuId, score, callback){ //插入新的结果
     var sql = "INSERT INTO result SET examId= ?,stuId= ?,score= ?";
     // get a connection from the pool
     db.pool.getConnection(function(err, connection) {
@@ -93,7 +93,7 @@ Result.prototype.save = function(examId,stuId,score,callback){ //插入新的结
     });
 }
 
-Result.prototype.change = function(examId,stuId,score, callback) { //改成绩
+Result_dao.prototype.Result_change = function(examId, stuId, score, callback) { //改成绩
     var sql = "update result set score= ? WHERE examId=? and stuId=?";
     
     db.pool.getConnection(function(err, connection) {
@@ -117,4 +117,4 @@ Result.prototype.change = function(examId,stuId,score, callback) { //改成绩
 
 
 
-module.exports = Result;
+module.exports = Result_dao;

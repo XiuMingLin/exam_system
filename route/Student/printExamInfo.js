@@ -1,5 +1,5 @@
 const puppeteer = require('phantom')
-const Pro = require('../../model/Pro')
+const Pro = require('../../dao/Pro_dao')
 const iconv = require('iconv-lite')
 
 module.exports = async(req, res)=>{

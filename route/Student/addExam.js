@@ -1,4 +1,4 @@
-const Result = require('../../model/Result')
+const Result = require('../../dao/Result_dao')
 const iconv = require('iconv-lite')
 
 module.exports = async(req, res)=>{
@@ -8,7 +8,7 @@ module.exports = async(req, res)=>{
     console.log(examId)
     console.log(stuId)
     console.log(score)
-    result.save(examId, stuId, score, (err)=>{
+    result.Result_save(examId, stuId, score, (err)=>{
         if(err){
             res.send('添加失败')
         }else{

@@ -1,10 +1,10 @@
-const Pro = require('../../model/Pro')
+const Pro = require('../../dao/Pro_dao')
 const iconv = require('iconv-lite')
 
 module.exports = async(req, res)=>{
     const { proId } = req.query
     var pro = new Pro()
-    pro.dele(proId, (err)=>{
+    pro.Pro_dele(proId, (err)=>{
         if(err){
             res.send('删除失败')
         }else{

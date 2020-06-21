@@ -1,11 +1,11 @@
 var db = require('../config/database');
 var _ = require('underscore');
 
-var Stu = function() {};
+var Exam_dao= function() {};
 
 
-Stu.prototype.find  = function(username, callback) {  //传入id 返回一行
-    var sql = "SELECT * FROM stu WHERE userId=?";
+Exam_dao.prototype.Exam_find  = function(examId , callback) {  //传入id 返回一行
+    var sql = "SELECT * FROM exam WHERE examId =?";
     // get a connection from the pool
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -14,7 +14,7 @@ Stu.prototype.find  = function(username, callback) {  //传入id 返回一行
         }
         // make the query
 
-        connection.query(sql, [username], function(err, results) {
+        connection.query(sql, [examId], function(err, results) {
             if (err) {
                 callback(true);
                 return;
@@ -25,8 +25,8 @@ Stu.prototype.find  = function(username, callback) {  //传入id 返回一行
         });
     });
 };
-Stu.prototype.save = function(username,password,stuname,callback){
-    var sql = "INSERT INTO stu SET userId= ?, userPwd= ?, stuName = ?";
+Exam_dao.prototype.Exam_save = function(Examname, teaId, callback){
+    var sql = "INSERT INTO exam SET examName = ?, teaId = ?";
     // get a connection from the pool
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -35,7 +35,7 @@ Stu.prototype.save = function(username,password,stuname,callback){
         }
         // make the query
 
-        connection.query(sql, [username,password,stuname], function(err, results) {
+        connection.query(sql, [Examname,teaId], function(err, results) {
             if (err) {
                 callback(true);
                 return;
@@ -46,8 +46,8 @@ Stu.prototype.save = function(username,password,stuname,callback){
         });
     });
 }
-Stu.prototype.change = function(newpwd,account_number, callback) {
-    var sql = "update stu set userPwd= ? WHERE userId=? ";
+Exam_dao.prototype.Exam_change = function(examid, isenable, callback) {
+    var sql = "update exam set isEnable = ? WHERE examId =? ";
     
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -55,7 +55,7 @@ Stu.prototype.change = function(newpwd,account_number, callback) {
             return;
         }
       
-        connection.query(sql, [newpwd,account_number], function(err, results) {
+        connection.Exam_query(sql, [examid,isenable], function(err, results) {
             if (err) {
                 callback(true);
                 return;
@@ -69,8 +69,8 @@ Stu.prototype.change = function(newpwd,account_number, callback) {
 };
 
 
-Stu.prototype.dele = function(account_number, callback) {
-    var sql = "delete from stu WHERE userId=? ";
+Exam_dao.prototype.Exam_dele = function(examId , callback) {
+    var sql = "delete from exam WHERE examId =? ";
    
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -78,7 +78,7 @@ Stu.prototype.dele = function(account_number, callback) {
             return;
         }
       
-        connection.query(sql, [account_number], function(err, results) {
+        connection.query(sql, [examId], function(err, results) {
             if (err) {
                 callback(true);
                 return;
@@ -91,4 +91,4 @@ Stu.prototype.dele = function(account_number, callback) {
     });
 };
 
-module.exports = Stu;
+module.exports = Exam_dao;

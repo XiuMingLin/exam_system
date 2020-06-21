@@ -1,11 +1,11 @@
 var db = require('../config/database');
 var _ = require('underscore');
 
-var Exam= function() {};
+var Tea_dao = function() {};
 
 
-Exam.prototype.find  = function(examId , callback) {  //传入id 返回一行
-    var sql = "SELECT * FROM exam WHERE examId =?";
+Tea_dao.prototype.Tea_find  = function(username, callback) {  //传入id 返回一行
+    var sql = "SELECT * FROM tea WHERE userId=?";
     // get a connection from the pool
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -14,7 +14,7 @@ Exam.prototype.find  = function(examId , callback) {  //传入id 返回一行
         }
         // make the query
 
-        connection.query(sql, [examId], function(err, results) {
+        connection.query(sql, [username], function(err, results) {
             if (err) {
                 callback(true);
                 return;
@@ -25,8 +25,8 @@ Exam.prototype.find  = function(examId , callback) {  //传入id 返回一行
         });
     });
 };
-Exam.prototype.save = function(Examname,teaId,callback){
-    var sql = "INSERT INTO exam SET examName = ?, teaId = ?";
+Tea_dao.prototype.Tea_save = function(username, password, teaname, callback){
+    var sql = "INSERT INTO tea SET userId= ?, userPwd= ?, teaName = ?";
     // get a connection from the pool
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -35,7 +35,7 @@ Exam.prototype.save = function(Examname,teaId,callback){
         }
         // make the query
 
-        connection.query(sql, [Examname,teaId], function(err, results) {
+        connection.query(sql, [username,password,teaname], function(err, results) {
             if (err) {
                 callback(true);
                 return;
@@ -46,31 +46,8 @@ Exam.prototype.save = function(Examname,teaId,callback){
         });
     });
 }
-Exam.prototype.change = function(examid,isenable, callback) {
-    var sql = "update exam set isEnable = ? WHERE examId =? ";
-    
-    db.pool.getConnection(function(err, connection) {
-        if (err) {
-            callback(true);
-            return;
-        }
-      
-        connection.query(sql, [examid,isenable], function(err, results) {
-            if (err) {
-                callback(true);
-                return;
-            }
-            callback(false, results);
-            connection.release();
-        });
-      
-
-    });
-};
-
-
-Exam.prototype.dele = function( examId , callback) {
-    var sql = "delete from exam WHERE examId =? ";
+Tea_dao.prototype.Tea_change = function(newpwd, account_number, callback) {
+    var sql = "update tea set userPwd= ? WHERE userId=? ";
    
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -78,7 +55,7 @@ Exam.prototype.dele = function( examId , callback) {
             return;
         }
       
-        connection.query(sql, [examId], function(err, results) {
+        connection.query(sql, [newpwd,account_number], function(err, results) {
             if (err) {
                 callback(true);
                 return;
@@ -91,4 +68,28 @@ Exam.prototype.dele = function( examId , callback) {
     });
 };
 
-module.exports = Exam;
+
+Tea_dao.prototype.dele = function(account_number, callback) {
+    var sql = "delete from tea WHERE userId=? ";
+   
+  
+    db.pool.getConnection(function(err, connection) {
+        if (err) {
+            callback(true);
+            return;
+        }
+      
+        connection.query(sql, [account_number], function(err, results) {
+            if (err) {
+                callback(true);
+                return;
+            }
+            callback(false, results);
+            connection.release();
+        });
+      
+
+    });
+};
+
+module.exports = Tea_dao;
