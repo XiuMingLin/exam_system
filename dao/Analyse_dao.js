@@ -1,33 +1,12 @@
 var db = require('../config/database');
 var _ = require('underscore');
+//test
 
-var Pro = function() {};
+var Analyse_dao= function() {};
 
 
-Pro.prototype.findbypid  = function(proId, callback) {  //传入id 返回一行
-    var sql = "SELECT * FROM pro WHERE proId=?";
-    // get a connection from the pool
-    db.pool.getConnection(function(err, connection) {
-        if (err) {
-            callback(true);
-            return;
-        }
-        // make the query
-
-        connection.query(sql, [proId], function(err, results) {
-            if (err) {
-                callback(true);
-                return;
-            }
-
-            callback(false, results);
-            connection.release();
-        });
-    });
-};
-
-Pro.prototype.findbyeid  = function(examId, callback) {  //传入id 返回一行
-    var sql = "SELECT * FROM pro WHERE examId=?";
+Analyse_dao.prototype.Analyse_find  = function(examId, callback) {  //查询某一考试的分析
+    var sql = "SELECT * FROM analyse WHERE examId=?";
     // get a connection from the pool
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -49,8 +28,9 @@ Pro.prototype.findbyeid  = function(examId, callback) {  //传入id 返回一行
 };
 
 
-Pro.prototype.save = function(proId,answer,score,type,prob,callback){
-    var sql = "INSERT INTO pro SET proId= ?,answer= ?,score= ?,type= ?,prob = ?";
+
+Analyse_dao.prototype.Analyse_save = function(examId, callback){ //插入新的结果
+    var sql = "INSERT INTO analyse SET examId= ?";
     // get a connection from the pool
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -59,7 +39,7 @@ Pro.prototype.save = function(proId,answer,score,type,prob,callback){
         }
         // make the query
 
-        connection.query(sql, [proId,answer,score,type,prob], function(err, results) {
+        connection.query(sql, [examId], function(err, results) {
             if (err) {
                 callback(true);
                 return;
@@ -70,8 +50,9 @@ Pro.prototype.save = function(proId,answer,score,type,prob,callback){
         });
     });
 }
-Pro.prototype.change = function(newpwd,account_number, callback) {
-    var sql = "update pro set userPwd= ? WHERE userId=? ";
+
+Analyse_dao.prototype.Analyse_change_score = function(examId, evasocre, callback) { //改平均成绩
+    var sql = "update analyse set evasocre= ? WHERE examId=?";
     
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -79,7 +60,7 @@ Pro.prototype.change = function(newpwd,account_number, callback) {
             return;
         }
       
-        connection.query(sql, [newpwd,account_number], function(err, results) {
+        connection.query(sql, [examId,evasocre], function(err, results) {
             if (err) {
                 callback(true);
                 return;
@@ -93,16 +74,16 @@ Pro.prototype.change = function(newpwd,account_number, callback) {
 };
 
 
-Pro.prototype.dele = function(proId, callback) {
-    var sql = "delete from pro WHERE proId=? ";
-   
+Analyse_dao.prototype.Analyse_change_result = function(examId, resu, callback) { //改成绩分析
+    var sql = "update analyse set result= ? WHERE examId=?";
+    
     db.pool.getConnection(function(err, connection) {
         if (err) {
             callback(true);
             return;
         }
       
-        connection.query(sql, [proId], function(err, results) {
+        connection.query(sql, [examId,resu], function(err, results) {
             if (err) {
                 callback(true);
                 return;
@@ -115,4 +96,6 @@ Pro.prototype.dele = function(proId, callback) {
     });
 };
 
-module.exports = Pro;
+
+
+module.exports = Analyse_dao;

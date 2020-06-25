@@ -1,4 +1,4 @@
-const Exam = require('../../model/Exam')
+const Exam = require('../../dao/Exam_dao')
 const iconv = require('iconv-lite')
 
 module.exports = async(req, res)=>{
@@ -7,7 +7,7 @@ module.exports = async(req, res)=>{
     var exam = new Exam()
     console.log(examName)
     console.log(teaId)
-    exam.save(iconv.encode(examName, 'utf8'), iconv.encode(teaId, 'utf8'), (err)=>{
+    exam.Exam_save(iconv.encode(examName, 'utf8'), iconv.encode(teaId, 'utf8'), (err)=>{
         if(err){
             res.send('添加失败')
         }else{
