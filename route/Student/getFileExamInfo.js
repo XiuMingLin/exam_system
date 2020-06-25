@@ -46,6 +46,7 @@ module.exports = async(req, res)=>{
             docx.generate(res)
             //跳转主页
             //TODO
+            res.redirect('/student_welcome(login_success).html')
         }
     })
 }

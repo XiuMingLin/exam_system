@@ -46,7 +46,7 @@ Tea_dao.prototype.Tea_save = function(username, password, teaname, callback){
         });
     });
 }
-Tea_dao.prototype.Tea_change = function(newpwd, account_number, callback) {
+Tea_dao.prototype.Tea_change = function(newpwd, username, callback) {
     var sql = "update tea set userPwd= ? WHERE userId=? ";
    
     db.pool.getConnection(function(err, connection) {
@@ -55,7 +55,7 @@ Tea_dao.prototype.Tea_change = function(newpwd, account_number, callback) {
             return;
         }
       
-        connection.query(sql, [newpwd,account_number], function(err, results) {
+        connection.query(sql, [newpwd,username], function(err, results) {
             if (err) {
                 callback(true);
                 return;

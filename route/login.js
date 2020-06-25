@@ -19,6 +19,8 @@ login.post('/login', (req,res)=>{
             if(docs == null){
                 res.send('用户不存在')
             }else{
+                req.session.userId = docs[0].userId
+                req.session.type = 'stu'
                 if(docs[0].userPwd == password){
                     res.redirect('/student_welcome(login_success).html')
                 }
@@ -30,6 +32,8 @@ login.post('/login', (req,res)=>{
             if(docs == null){
                 res.send('用户不存在')
             }else{
+                req.session.userId = docs[0].userId
+                req.session.type = 'tea'
                 if(docs[0].userPwd == password){
                     res.redirect('/login/index')
                 }

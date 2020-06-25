@@ -9,4 +9,6 @@ Student.get('/printExamInfo', require('./Student/printExamInfo'))
 
 Student.get('/getFileExamInfo', require('./Student/getFileExamInfo'))
 
+Student.get('/findscore', require('./Student/findsocre'))
+
 module.exports = Student

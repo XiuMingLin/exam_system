@@ -25,6 +25,29 @@ Exam_dao.prototype.Exam_find  = function(examId , callback) {  //传入id 返回
         });
     });
 };
+
+Exam_dao.prototype.Exam_find2  = function(callback) {  //传入id 返回一行
+    var sql = "SELECT * FROM exam";
+    // get a connection from the pool
+    db.pool.getConnection(function(err, connection) {
+        if (err) {
+            callback(true);
+            return;
+        }
+        // make the query
+
+        connection.query(sql, function(err, results) {
+            if (err) {
+                callback(true);
+                return;
+            }
+
+            callback(false, results);
+            connection.release();
+        });
+    });
+};
+
 Exam_dao.prototype.Exam_save = function(Examname, teaId, callback){
     var sql = "INSERT INTO exam SET examName = ?, teaId = ?";
     // get a connection from the pool

@@ -46,7 +46,7 @@ Stu_dao.prototype.Stu_save = function(username, password, stuname, callback){
         });
     });
 }
-Stu_dao.prototype.Stu_change = function(newpwd, account_number, callback) {
+Stu_dao.prototype.Stu_change = function(newpwd, username, callback) {
     var sql = "update stu set userPwd= ? WHERE userId=? ";
     
     db.pool.getConnection(function(err, connection) {
@@ -55,7 +55,7 @@ Stu_dao.prototype.Stu_change = function(newpwd, account_number, callback) {
             return;
         }
       
-        connection.query(sql, [newpwd,account_number], function(err, results) {
+        connection.query(sql, [newpwd,username], function(err, results) {
             if (err) {
                 callback(true);
                 return;

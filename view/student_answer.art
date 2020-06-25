@@ -13,12 +13,12 @@
 <script type="text/javascript" src="lib/html5.js"></script>
 <script type="text/javascript" src="lib/respond.min.js"></script>
 <![endif]-->
-<link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
-<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
-<link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="/static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="/static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="/lib/Hui-iconfont/1.0.8/iconfont.css" />
 
-<link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
-<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="/static/h-ui.admin/css/style.css" />
 <!--[if IE 6]>
 <script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script><![endif]-->
@@ -67,7 +67,7 @@
 			<dt><i class="Hui-iconfont">&#xe616;</i> 考试管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="student_answer.html" title="参加考试">参加考试</a></li>
+					<li><a href="/answer/answer" title="参加考试">参加考试</a></li>
 				</ul>
 			</dd>
 		</dl>
@@ -75,8 +75,8 @@
 			<dt><i class="Hui-iconfont">&#xe613;</i> 成绩管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="student_mark.html" title="查看成绩">查看成绩</a></li>
-					<li><a href="/student/printExamInfo" title="打印成绩单">打印成绩单</a></li>
+					<li><a href="/student/findscore" title="查看成绩">查看成绩</a></li>
+					<li><a href="/student/getFileExamInfo" title="打印成绩单">打印成绩单</a></li>
 				</ul>
 			</dd>
 		</dl>
@@ -84,8 +84,8 @@
 			<dt><i class="Hui-iconfont">&#xe620;</i> 信息管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="student_change_password.html" title="修改密码">修改密码</a></li>
-					<li><a href="user_info.html" title="个人信息">个人信息</a></li>
+					<li><a href="/student_change_password.html" title="修改密码">修改密码</a></li>
+				
 				</ul>
 			</dd>
 		</dl>
@@ -100,18 +100,21 @@
 		<article class="cl pd-20">
 			<table class="table table-border table-bordered table-bg">
 				<thead>
-					查看考试成绩
+					考试列表
 					<tr class="text-c">
-						<th>已参加的考试</th>
-						<th>分数</th>
+						<th>考试名称</th>
+						<th>老师序号</th>
+						<th>是否启用</th>
 			</tr>
 			<tbody id="examlist">
 					<!--add js here-->
-					<!-- <tr class="text-c">
-						<td>语文</td>
-						<td>92</td>
-			</tr> -->
-
+					{{each res}}
+					<tr class="text-c">
+						<td>{{$value.examName}}</td>
+					<td>{{$value.teaId}}</td>
+					<td>{{$value.teaId == '0' ? '未启用' : '启用'}}</td>
+					</tr>
+					{{/each}}
 		</tbody>
 		</thead>
 		</article>
@@ -119,15 +122,14 @@
 </section>
 
 <!--_footer 作为公共模版分离出去-->
-<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
-<script type="text/javascript" src="lib/layer/2.4/layer.js"></script> 
+<script type="text/javascript" src="/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="/lib/layer/2.4/layer.js"></script> 
  
-<script type="text/javascript" src="lib/jquery.validation/1.14.0/jquery.validate.js"></script> 
-<script type="text/javascript" src="lib/jquery.validation/1.14.0/validate-methods.js"></script> 
-<script type="text/javascript" src="lib/jquery.validation/1.14.0/messages_zh.js"></script> 
-<script type="text/javascript" src="static/h-ui/js/H-ui.js"></script> 
-<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.page.js"></script> 
-
+<script type="text/javascript" src="/lib/jquery.validation/1.14.0/jquery.validate.js"></script> 
+<script type="text/javascript" src="/lib/jquery.validation/1.14.0/validate-methods.js"></script> 
+<script type="text/javascript" src="/lib/jquery.validation/1.14.0/messages_zh.js"></script> 
+<script type="text/javascript" src="/static/h-ui/js/H-ui.js"></script> 
+<script type="text/javascript" src="/static/h-ui.admin/js/H-ui.admin.page.js"></script> 
 <!--/_footer /作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->
