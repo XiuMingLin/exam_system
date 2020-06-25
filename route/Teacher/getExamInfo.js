@@ -9,7 +9,7 @@ module.exports = async(req, res)=>{
         if(err){
             res.send('查询失败')
         }else{
-            res.send(docs)
+            res.json(docs)
         }
     })
 }

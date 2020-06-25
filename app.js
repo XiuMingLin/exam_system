@@ -15,17 +15,19 @@ app.use(session({
     }
 }))
 
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'view')))
 
 const Teacher = require('./route/Teacher')
 const Student = require('./route/Student')
 const Exam = require('./route/Exam')
 const Problem = require('./route/Problem')
+const login = require('./route/login')
 
 app.use('/teacher', Teacher)
 app.use('/student', Student)
 app.use('/exam', Exam)
 app.use('/problem', Problem)
+app.use('/login', login)
 
 app.listen(80)
 console.log('server on')
