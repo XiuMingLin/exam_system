@@ -49,8 +49,8 @@ Pro_dao.prototype.Pro_findbyeid  = function(examId, callback) {  //传入id 返�
 };
 
 
-Pro_dao.prototype.Pro_save = function(proId, answer, score, type, prob, examId,callback){
-    var sql = "INSERT INTO pro SET proId= ?,answer= ?,score= ?,type= ?,prob = ?，examId =?";
+Pro_dao.prototype.Pro_save = function(examId, answer, score, type, prob, callback){
+    var sql = "INSERT INTO pro SET examId= ?,answer= ?,score= ?,type= ?,prob = ?";
     // get a connection from the pool
     db.pool.getConnection(function(err, connection) {
         if (err) {
@@ -59,7 +59,7 @@ Pro_dao.prototype.Pro_save = function(proId, answer, score, type, prob, examId,c
         }
         // make the query
 
-        connection.query(sql, [proId,answer,score,type,prob,examId], function(err, results) {
+        connection.query(sql, [examId,answer,score,type,prob,examId], function(err, results) {
             if (err) {
                 callback(true);
                 return;
