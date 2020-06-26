@@ -122,14 +122,15 @@
 	function validate(){
 		var score=0;
 		var obj1 = document.getElementsByName("1");
-		for(var i=0; i<obj1.length; i ++){
-        if(obj1[i].checked){
-            //alert(obj1[i].value);
-            if(obj1[i].value=="1D")
-            	score=score+5;
-        }
+		for(var i=0; i<obj1.length; i++){
+        	if(obj1[i].checked){
+            	//alert(obj1[i].value);
+            	if(obj1[i].value=="1D")
+            		score=score+5;
+            	//alert(score);
+        	}
     	}
-    	var obj2 = document.getElementByid("2");
+    	var obj2 = document.getElementById("2");
     	//alert(obj2.value);
     	if(obj2.value=="2"||obj2.value=="2个")
     		score=score+5;
@@ -137,7 +138,7 @@
     	if(obj3[1].checked&&obj3[2].checked&&obj3[3].checked)
     		score=score+5;
     	alert(score);
-	}
+    }
 </script>
 <!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
