@@ -67,7 +67,10 @@
 			<dt><i class="Hui-iconfont">&#xe616;</i> 考试管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="/answer/answer" title="参加考试">参加考试</a></li>
+					<li><a href="/answer/answer" title="参加考试">考试列表</a></li>
+				</ul>
+				<ul>
+					<li><a href="/student_answer.html" title="参加考试">参加考试</a></li>
 				</ul>
 			</dd>
 		</dl>
@@ -109,7 +112,7 @@
 					<!--add js here-->
 					{{each res}}
 					<tr class="text-c">
-						<td>{{$value.examId}}</td>
+						<td>{{$value.examId == '1' ? 'JAVAEE' : '高数'}}</td>
 						<td>{{$value.score}}</td>
 					</tr>
 					{{/each}}

@@ -67,7 +67,10 @@
 			<dt><i class="Hui-iconfont">&#xe616;</i> 考试管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="student_answer.html" title="参加考试">参加考试</a></li>
+					<li><a href="/answer/answer" title="参加考试">考试列表</a></li>
+				</ul>
+				<ul>
+					<li><a href="/student_answer.html" title="参加考试">参加考试</a></li>
 				</ul>
 			</dd>
 		</dl>
@@ -98,7 +101,7 @@
 	<nav class="breadcrumb"><i class="Hui-iconfont"></i> <a href="/" class="maincolor">首页</a> <span class="c-999 en">&gt;</span><span class="c-666">空白页</span></nav>
 	<div class="Hui-article">
 		<article class="cl pd-20">
-			<form >
+			<form action="/student/ans" method="GET">
 				1、采用邻接表存储的图的广度优先遍历算法类似于二叉树的？<br>
 				<input type="radio" name="1" value="1A">A.先序遍历 <br>
 				<input type="radio" name="1" value="1B">B.中序遍历 <br>
@@ -112,6 +115,7 @@
 				<input type="checkbox" name="3" value="3C">C.双向链表<br>
 				<input type="checkbox" name="3" value="3D">D.循环链表<br>
 				<input type="submit" value="提交" onclick="validate()">
+				<input type="hidden" value="" name="score" id="score">
 			</form>
 		</article>
 	</div>
@@ -129,14 +133,15 @@
             	score=score+5;
         }
     	}
-    	// var obj2 = document.getElementByid("2");
-    	// //alert(obj2.value);
-    	// if(obj2.value=="2"||obj2.value=="2个")
-    	// 	score=score+5;
+    	var obj2 = document.getElementsByName("2");
+    	//alert(obj2.value);
+    	if(obj2.value=="2"||obj2.value=="2个")
+    		score=score+5;
     	var obj3 = document.getElementsByName("3");
     	if(obj3[1].checked&&obj3[2].checked&&obj3[3].checked)
     		score=score+5;
-    	window.location.href = "localhost/"
+		// window.location.href('localhost/student/ans?score=' + score)
+		document.getElementById('score').value = score
 	}
 </script>
 <!--_footer 作为公共模版分离出去-->
