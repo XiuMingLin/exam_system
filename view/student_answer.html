@@ -105,7 +105,7 @@
 				<input type="radio" name="1" value="1C">C.后序遍历 <br>
 				<input type="radio" name="1" value="1D">D.按层遍历 <br>
 				2、如果使用比较高效的算法判断单链表有没有环的算法中，至少需要几个指针？<br>
-				<input type="text" name="2"><br>
+				<input type="text" id="2"><br>
 				3、在线性表的下列存储结构中，读取元素花费时间相同的是<br>
 				<input type="checkbox" name="3" value="3A">A.顺序结构<br>
 				<input type="checkbox" name="3" value="3B">B.单链表<br>
@@ -124,13 +124,19 @@
 		var obj1 = document.getElementsByName("1");
 		for(var i=0; i<obj1.length; i ++){
         if(obj1[i].checked){
-            alert(obj1[i].value);
-            if(obj1[i]=="1D")
+            //alert(obj1[i].value);
+            if(obj1[i].value=="1D")
             	score=score+5;
         }
     	}
-    	var obj2 = document.getElementsByName("2");
-    	//alert("a");
+    	var obj2 = document.getElementsByid("2").innerHTML;
+    	//alert(obj2.value);
+    	if(obj2.value=="2"||obj2.value=="2个")
+    		score=score+5;
+    	var obj3 = document.getElementsByName("3");
+    	if(obj3[1].checked&&obj3[2].checked&&obj3[3].checked)
+    		score=score+5;
+    	alert(score);
 	}
 </script>
 <!--_footer 作为公共模版分离出去-->
